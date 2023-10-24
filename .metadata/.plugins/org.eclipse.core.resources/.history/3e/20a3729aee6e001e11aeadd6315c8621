@@ -1,0 +1,22 @@
+package com.test.jdbc;
+
+public class Ex04_PreparedStatement {
+	
+	public static void main(String[] args) {
+		
+		//Ex04_PreparedStatement.java
+		m1();
+		
+	}
+
+	private static void m1() {
+		
+		//Statement vs PreparedStatement
+		//- Statement 정적 SQL(매개변수 X)
+		//- PreparedStatement > 동적 SQL(매개변수 O)
+		
+		String sql = "insert into tblAddress (seq, name, age, gender, address, regdate) values (seqAddress.nextval, '아무개', 22, 'm', '서울시 강남구 대치동', default)"; //정적 SQL
+		
+	}
+	
+}

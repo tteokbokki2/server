@@ -1,0 +1,48 @@
+package com.test.repository;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
+import com.test.memo.DBUtil;
+import com.test.memo.model.MemoDTO;
+
+public class MemoDAO {
+	
+	private Connection conn;
+	private Statement stat;
+	private PreparedStatement pstat;
+	private ResultSet rs;
+	
+	public MemoDAO() {
+		
+		this.conn = DBUtil.open();
+		
+		
+	}
+
+	public int add(MemoDTO dto) {
+		
+		//DTO > insert
+		
+		try {
+			
+			String sql = "insert into tblMemo (seq, name, pw, memo, regdate) values (seqMemo.nextval, ?, ?, ?, default)";
+			
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getName());
+			pstat.setString(2, dto.getPw());
+			pstat.setString(3, dto.getMemo());
+			
+			return pstat.executeUpdate();			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+		
+	}
+
+}

@@ -1,0 +1,21 @@
+package com.test.java;
+
+public class Ex04 {
+	
+	public static void main(String[] args) {
+		
+		//Selenium(셀레니움)
+		//- 테스트 자동화 도구
+		
+		//1. 셀레니움 라이브러리
+		//2. 브라우저 드라이버
+		
+		//https://googlechromelabs.github.io/chrome-for-testing/#stable
+		
+		//1. C:\class\dev\chromdriver.exe
+		//2. lib > jar 복사
+		
+		m1();
+		
+	}//main
+}

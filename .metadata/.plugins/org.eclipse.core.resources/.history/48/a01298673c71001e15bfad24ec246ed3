@@ -1,0 +1,24 @@
+새 프로젝트
+- Dynamic Web Project > "Todo" > context root: "todo" > Generate web.xml 체크
+
+Todo List, 메모장, 게시판 > CRUD 집중할 수 있는 예제
+
+Todo List
+1. 주제
+2. 업무
+	- 할일 쓰기
+	- 할일 보기(목록)
+	- 할일 수정하기(X)
+	- 할일 삭제하기
+3. 화면(+ 페이지) > 눈에 보이는 페이지
+	- 할일 보기(목록) 페이지 > webbapp > list.jsp
+	- 할일 쓰기 페이지 > add.jsp, addok.jsp  webbapp >
+	- 할일 수정 페이지 > editok.jsp 		webbapp >
+	- 할일 삭제 페이지 > delok.jsp 		webbapp >
+4. 리소스
+	- 조각 페이지
+		- webapp > inc > header.jsp 
+		- webapp > inc > asset.jsp
+	- jQuery(CDN으로 가져오기)
+		-  webapp > js > jquery-1.12.js 복사
+	

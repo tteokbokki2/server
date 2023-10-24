@@ -1,0 +1,58 @@
+package com.test.jdbc;
+
+import java.sql.Connection;
+import java.sql.Statement;
+
+public class Ex03_Statement {
+	
+	public static void main(String[] args) {
+		
+		/*
+		Ex03_Statement.java
+		
+		1. Connection - 연결 / 종료
+		2. Statement - 모든 SQL을 실행하는 역할
+		
+		Statement 종류
+		1. Statement
+			- 기본형
+			- 매개 변수 처리가 번거로움
+			- 안정성 및 가독성 낮음
+		
+		2. PreparedStatement
+			- 개량형
+			- 매개 변수 처리에 특화
+			- 안정성 및 가독성 높음
+		
+		3. CallableStatement
+			- 개량형
+			- 프로시저 호출 전용
+		 */
+
+		m1();
+		
+	
+	}//main
+	
+	private static void m1() {
+		
+		//반환값 X > insert 실행
+		
+		Connection conn = null;
+		Statement stat = null;
+		
+		try {
+			
+			conn = DBUtil.open();
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+	}//m1
+	
+	
+}

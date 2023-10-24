@@ -1,0 +1,31 @@
+package com.test.jdbc;
+
+import java.sql.Connection;
+
+public class Ex01 {
+	
+	public static void main(String[] args) {
+		
+		/*
+			2. DB 서버 접속
+			- JDBC > Connection 클래스 사용
+			2.1 호스트명: 서버IP or 도메인주소 > localhost
+			2.2 포트번호: 1521
+			2.3 SID: xe
+			2.4 드라이버: thin
+			2.5 사용자: hr
+			2.6 암호: java1234		
+		*/
+		
+		Connection conn = null;
+		
+		//연결 문자열, Connection String
+		String url = "jdbc:oracle:thin:@localhost:1521:xe";
+		String id = "hr";
+		String pw = "java1234";
+		
+		
+		
+	}
+	
+}

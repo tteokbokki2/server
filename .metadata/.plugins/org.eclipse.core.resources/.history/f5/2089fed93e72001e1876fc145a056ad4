@@ -1,0 +1,46 @@
+package com.test.java;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+public class Ex04 {
+	
+	public static void main(String[] args) {
+		
+		//Selenium(셀레니움)
+		//- 테스트 자동화 도구
+		
+		//1. 셀레니움 라이브러리
+		//2. 브라우저 드라이버
+		
+		//https://googlechromelabs.github.io/chrome-for-testing/#stable
+		
+		//1. C:\class\dev\chromdriver.exe
+		//2. lib > jar 복사
+		
+		m1();
+		
+	}//main
+
+	private static void m1() {
+		
+		String webDriverID = "webdriver.chrome.driver";
+		String path = "C:\\class\\dev\\chromdriver.exe";
+		
+		System.setProperty(webDriverID, path);
+		
+		ChromeOptions options = new ChromeOptions();
+		
+		options.setCapability("ignoreProtectedModeSettings", true);
+		
+		//브라우저 참조 객체
+		WebDriver driver = new ChromeDriver(options);
+		
+		String url = "http://naver.com";
+		
+		driver.get(url);
+		
+		
+	}
+}

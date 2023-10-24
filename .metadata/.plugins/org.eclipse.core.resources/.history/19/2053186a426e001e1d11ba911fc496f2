@@ -1,0 +1,17 @@
+
+Java > Oracle > JDBC > HTML > CSS ..
+
+JDBC, Java Database Connectivity
+- 자바 프로그램 <- (연결) -> 데이터베이스(오라클)
+- 중간 계층 > 퍼시스턴스 계층(영구 계층)
+
+퍼시스턴스 계층
+1. JDBC
+2. Spring JDBC
+3. MyBatis
+4. JPA
+
+JDBC 환경 설정
+- *.jar 설치
+- 데이터베이스 제조사 배포 > 오라클 홈페이지
+- Oracle 설치한 상황이라면 설치 폴더 내 jar 포함

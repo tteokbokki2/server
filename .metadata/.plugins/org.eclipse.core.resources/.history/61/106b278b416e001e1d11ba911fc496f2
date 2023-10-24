@@ -1,0 +1,6 @@
+
+Java > Oracle > JDBC > HTML > CSS ..
+
+JDBC, Java Database Connectivity
+- 자바 프로그램 <- (연결) -> 데이터베이스(오라클)
+- 중간 계층 > 퍼시스턴스 계층(영구 계층)

@@ -1,0 +1,16 @@
+새 프로젝트
+- Dynamic Web Project > "Memo" > context root: "memo" > Generate web.xml 체크
+
+1. 주제 > 메모장
+2. 업무 > CRUD
+	- 메모 쓰기(C)
+	- 메모 목록(R)
+	- 메모 읽기(R)
+	- 메모 수정(U)
+	- 메모 삭제(D)
+3. DB
+	- Memo > script.sql
+4. 파일
+	- 공통 파일
+		- webapp > "inc" > "header.jsp"
+						 > "asset.jsp"	

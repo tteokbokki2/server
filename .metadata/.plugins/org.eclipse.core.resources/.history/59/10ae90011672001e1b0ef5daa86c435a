@@ -1,0 +1,30 @@
+package com.test.memo;
+
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet("/editok.do")
+public class EditOk extends HttpServlet {
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		//EditOk.java
+		
+		/*
+			1. 데이터 가져오기(수정 데이터)
+			2. DB 작업 > update > DAO 위임
+			3. 결과 피드백 > JSP 호출하기 
+		*/
+
+		RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/editok.jsp");
+		dispatcher.forward(req, resp);
+	}
+
+}

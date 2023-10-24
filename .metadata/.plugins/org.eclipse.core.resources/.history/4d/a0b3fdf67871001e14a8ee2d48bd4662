@@ -1,0 +1,53 @@
+새 프로젝트
+- Dynamic Web Project > "Memo" > context root: "memo" > Generate web.xml 체크
+
+1. 주제 > 메모장
+2. 업무 > CRUD
+	- 메모 쓰기(C)
+	- 메모 목록(R)
+	- 메모 읽기(R)
+	- 메모 수정(U)
+	- 메모 삭제(D)
+3. DB
+	- Memo > script.sql
+4. 파일
+
+	- 공통 파일
+		- webapp > "inc" > "header.jsp"
+						 > "asset.jsp"
+						 
+	- 메모 쓰기
+		- "com.test.memo" > "Add.java"
+						  > "AddOk.java"
+		- webapp > WEB-INF > "views" > "add.jsp"
+									 > "addok.jsp"
+									 
+	- 메모 목록
+		- "com.test.memo" > "List.java"
+		- webapp > WEB-INF > "views" > "list.jsp"
+	
+	- 메모 읽기
+		- "com.test.memo" > "View.java"
+		- webapp > WEB-INF > "views" > "view.jsp"
+	
+	- 메모 수정
+		- "com.test.memo" > "Edit.java"
+						  > "EditOk.java"
+		- webapp > WEB-INF > "views" > "edit.jsp"
+									 > "editok.jsp"
+	
+	- 메모 삭제
+		- "com.test.memo" > "Del.java"
+						  > "DelOk.java"
+		- webapp > WEB-INF > "views" > "del.jsp"
+									 > "delok.jsp"
+	
+	- 템플릿
+		- "com.test.memo" > "Template.java"
+		- webapp > WEB-INF > "views" > "template.jsp"
+
+	- JDBC 설치
+		- "com.test.memo" > DBUtil.java 복사
+		-  WEB-INF > lib > ojdb6.jar 복사
+	
+		

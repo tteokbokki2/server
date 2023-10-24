@@ -1,0 +1,20 @@
+package com.test.java;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+public class Ex02 {
+	public static void main(String[] args) {
+		try {
+			
+			String url = "https://movie.daum.net/ranking/boxoffice/weekly";
+			
+			Document doc = Jsoup.connect(url).get();
+			
+			System.out.println(doc.html());
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

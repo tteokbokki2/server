@@ -1,0 +1,11 @@
+package com.test.jsp;
+
+public class Score {
+	
+	public int kor;
+	public int eng;
+	public int math;
+	
+	
+
+}
