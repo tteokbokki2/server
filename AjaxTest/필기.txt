@@ -35,3 +35,15 @@ Ajax, Asynchronous JavaScript and XML
 - com.test.ajax.controller	> "Ex04.java"
 							> "Ex04Data.java"
 - views						> "ex04.jsp"
+
+- com.test.ajax.controller	> "Ex05.java"
+							> "Ex05Data.java"
+- views						> "ex05.jsp"
+
+- com.test.ajax.controller	> "Ex06.java"
+							> "Ex06Data.java"
+- views						> "ex06.jsp"
+
+- com.test.ajax.controller	> "Ex07.java"
+							> "Ex07Data.java"
+- views						> "ex07.jsp"
