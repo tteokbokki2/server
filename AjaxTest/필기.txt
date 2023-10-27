@@ -17,33 +17,44 @@ Ajax, Asynchronous JavaScript and XML
 - 자바 스크립트 기술
 - 비동기 방식으로 자바스크립트를 사용해서 서버와 데이터를 통신하는 기술(XML 형식으로 주고 받음)
 
-- com.test.ajax.controller	> "Ex01.java"
-							> "Ex01Data.java"
-- com.test.ajax.respository	> "AjaxDAO.java"
-- views						> "ex01.jsp"
--							> "ex01data.jsp"
+- com.test.ajax.controller			> "Ex01.java"
+									> "Ex01Data.java"
+- com.test.ajax.respository			> "AjaxDAO.java"
+- views								> "ex01.jsp"
+-									> "ex01data.jsp"
 
-- com.test.ajax.controller	> "Ex02.java"
--							> "Ex02Data.java"
-- views						> "ex02.jsp"
--							> "ex02data.jsp"
+- com.test.ajax.controller			> "Ex02.java"
+-									> "Ex02Data.java"
+- views								> "ex02.jsp"
+-									> "ex02data.jsp"
 
-- com.test.ajax.controller	> "Ex03.java"
-							> "Ex03Data.java"
-- views						> "ex03.jsp"
+- com.test.ajax.controller			> "Ex03.java"
+									> "Ex03Data.java"
+- views								> "ex03.jsp"
 
-- com.test.ajax.controller	> "Ex04.java"
-							> "Ex04Data.java"
-- views						> "ex04.jsp"
+- com.test.ajax.controller			> "Ex04.java"
+									> "Ex04Data.java"
+- views								> "ex04.jsp"
 
-- com.test.ajax.controller	> "Ex05.java"
-							> "Ex05Data.java"
-- views						> "ex05.jsp"
+- com.test.ajax.controller			> "Ex05.java"
+									> "Ex05Data.java"
+- views								> "ex05.jsp"
 
-- com.test.ajax.controller	> "Ex06.java"
-							> "Ex06Data.java"
-- views						> "ex06.jsp"
+- com.test.ajax.controller			> "Ex06.java"
+									> "Ex06Data.java"
+- views								> "ex06.jsp"
 
-- com.test.ajax.controller	> "Ex07.java"
-							> "Ex07Data.java"
-- views						> "ex07.jsp"
+- com.test.ajax.controller			> "Ex07.java"
+									> "Ex07Data.java"
+- views								> "ex07.jsp"
+
+- AjaxTest > "script.sql"
+- com.test.ajax.controller			> "Ex08.java"
+- com.test.ajax.service				> "List.java"
+-									> "Add.java"
+-									> "Edit.java"
+
+- com.test.ajax.controller.model	> "AddressDTO.java"
+- views								> "ex08.jsp"
+
+- jackson library
