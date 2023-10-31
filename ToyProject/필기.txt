@@ -23,10 +23,16 @@
 			 
 구현
 - 패키지
-	1. com.test.toy		 		메인 패키지
-	2. com.test.toy.user 		회원
-	3. com.test.toy.repository	DB
-	4. com.test.toy.model 		DB
+	1. com.test.toy		 				메인 패키지
+	2. com.test.toy.user 				회원
+	3. com.test.toy.user.repository		DB
+	4. com.test.toy.user.model 			DB
+	5. com.test.toy.board 				게시판
+	6. com.test.toy.board.repository	DB
+	7. com.test.toy.board.model 		DB
+	8. com.test.toy.filter				필터
+	
+	
 	
 - 파일
 	1. com.test.toy
@@ -43,6 +49,19 @@
 		- UserDAO.java
 	4. com.test.toy.model
 		- UserDTO.java
+	5. com.test.toy.board.repository
+		- List.java: 목록보기
+		- Add.java: 글쓰기
+		- View.java: 글보기
+		- Edit.java: 수정
+		- Del.java: 삭제
+	6. com.test.toy.board.repository
+		- BoardDAO.java
+	7. com.test.toy.board.model
+		- BoardDTO.java
+	8. com.test.toy.filter		
+		- EncodingFilter
+	
 		
 - 뷰
 	1. views
@@ -57,6 +76,13 @@
 		c. inc
 			- asset.jsp: CSS, JS
 			- header.jsp
+		d. board
+			- list.jsp
+			- add.jsp
+			- view.jsp
+			- edit.jsp
+			- del.jsp
+			
 			
 - 라이브러리
 	- lib
