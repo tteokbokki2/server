@@ -9,10 +9,8 @@
 		</c:if>
 		
 		<c:if test="${not empty id}">
-		<span>
 			<span class="material-symbols-outlined">toys</span>..		
-			Toy
-		</span>
+			<span>Toy</span>
 		</c:if>
 		
 		<span>Project</span>
@@ -20,7 +18,7 @@
 	<nav>
 		
 		<c:if test="${not empty id}">
-		<span style="font-size: 13px; color: #555; margin-right: 10px;">${name}(${id})</span>
+		<span style="font-size: 13px; color: #777; margin-right: 10px;">${name}(${id})</span>
 		</c:if>
 	
 	

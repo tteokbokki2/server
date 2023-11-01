@@ -40,7 +40,7 @@ public class Unregister extends HttpServlet {
 		int result = dao.unregister(id);
 		
 		//3.
-		if(result == 1) {
+		if (result == 1) {
 			
 			//회원 탈퇴 + 로그아웃
 			
@@ -54,8 +54,8 @@ public class Unregister extends HttpServlet {
 	    } else {
 	    	
 	    	PrintWriter writer = resp.getWriter();
-		    writer.print("<script>alert('failed');history.back();</script>");
-		    writer.close();
+		writer.print("<script>alert('failed');history.back();</script>");
+		writer.close();
 	    }
 		
 		

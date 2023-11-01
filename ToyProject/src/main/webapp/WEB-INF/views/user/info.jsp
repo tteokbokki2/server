@@ -47,7 +47,7 @@
 				<th>이름</th>
 				<td>${name}</td>
 				<th>아이디</th>
-				<td>${dto.id}</td>
+				<td>${id}</td>
 			</tr>
 			<tr>
 				<th>등급</th>

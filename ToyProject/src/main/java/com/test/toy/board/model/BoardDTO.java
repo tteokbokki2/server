@@ -1,4 +1,4 @@
-package com.test.toy.board.repository;
+package com.test.toy.board.model;
 
 import lombok.Data;
 
@@ -13,4 +13,6 @@ public class BoardDTO {
 	private String id;
 	
 	private String name;
+	private int isnew;
+	
 }

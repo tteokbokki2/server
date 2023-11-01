@@ -18,6 +18,11 @@
 	
 	#list td { text-align: center; }
 	#list td:nth-child(2) { text-align: left; }
+
+	.is-new {
+		font-size: 14px;
+		color: tomato;
+	}
 </style>
 </head>
 <body>
@@ -34,60 +39,27 @@
 				<th>날짜</th>
 				<th>읽음</th>
 			</tr>
+			<c:forEach items="${list}" var="dto">
 			<tr>
-				<td>5</td>
-				<td>게시판입니다.</td>
-				<td>홍길동</td>
-				<td>2023-10-31</td>
-				<td>10</td>
+				<td>${dto.seq}</td>
+				<td>
+					<a href="/toy/board/view.do?seq=${dto.seq}">${dto.subject}
+					<c:if test="${dto.isnew == 1}">
+					<span class='is-new'>new</span>
+					</c:if>
+				</td>
+				<td>${dto.name}</td>
+				<td>${dto.regdate}</td>
+				<td>${dto.readcount}</td>
 			</tr>
-			<tr>
-				<td>5</td>
-				<td>게시판입니다.</td>
-				<td>홍길동</td>
-				<td>2023-10-31</td>
-				<td>10</td>
-			</tr>
-			<tr>
-				<td>5</td>
-				<td>게시판입니다.</td>
-				<td>홍길동</td>
-				<td>2023-10-31</td>
-				<td>10</td>
-			</tr>
-			<tr>
-				<td>5</td>
-				<td>게시판입니다.</td>
-				<td>홍길동</td>
-				<td>2023-10-31</td>
-				<td>10</td>
-			</tr>
-			<tr>
-				<td>5</td>
-				<td>게시판입니다.</td>
-				<td>홍길동</td>
-				<td>2023-10-31</td>
-				<td>10</td>
-			</tr>
-			<tr>
-				<td>5</td>
-				<td>게시판입니다.</td>
-				<td>홍길동</td>
-				<td>2023-10-31</td>
-				<td>10</td>
-			</tr>
-			<tr>
-				<td>5</td>
-				<td>게시판입니다.</td>
-				<td>홍길동</td>
-				<td>2023-10-31</td>
-				<td>10</td>
-			</tr>
+			</c:forEach>
 		</table>
 		
 		<div>
-			<button type="button" class="list" onclick="location.href='/toy/board/list.do'">목록보기</button>
-			<button type="button" class="add primary" onclick="location.href='/toy/board/add.do'">글쓰기</button>
+			<button type="button" class="list" onclick="location.href='/toy/board/list.do';">목록보기</button>
+			<c:if test="${not empty id}">
+			<button type="button" class="add primary" onclick="location.href='/toy/board/add.do';">글쓰기</button>
+			</c:if>
 		</div>
 		
 	</main>

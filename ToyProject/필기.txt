@@ -60,7 +60,8 @@
 	7. com.test.toy.board.model
 		- BoardDTO.java
 	8. com.test.toy.filter		
-		- EncodingFilter
+		- EncodingFilter.java
+		- AuthFilter.java
 	
 		
 - 뷰
@@ -110,4 +111,12 @@ Favicon
 - Favorite icon
 - icon 파일 필요(*.ico) > "favicon.ico"
 - webapp > asset > favicon.ico (위치 무관)
-		
+
+
+게시판 CRUD
+
+권한 처리
+- 목록보기, 상세보기 > 비회원(O), 회원(O)
+- 글쓰기, 수정하기, 삭제하기 > 비회원(X), 회원(O)
+- 수정하기, 삭제하기 > 비회원(X), 회원(선택적, 자기글만 가능)
+- 수정하기, 삭제하기 > 관리자(모든 글 가능)

@@ -28,7 +28,7 @@ public class Info extends HttpServlet {
 		
 		UserDTO dto = dao.get(id); //회원 정보
 		
-		dto.setIntro(dto.getIntro().replace("r\n", "<br>"));
+		dto.setIntro(dto.getIntro().replace("\r\n", "<br>"));
 		
 		//3.
 		req.setAttribute("dto", dto);

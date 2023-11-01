@@ -15,12 +15,12 @@
 	}
 	
 	#form-list form {
-		margin: 5px;
+		margin-right: 5px;
 	}	
 </style>
 </head>
 <body>
-	<!-- template.jsp -->
+	<!-- user/login.jsp -->
 	<%@ include file="/WEB-INF/views/inc/header.jsp" %>
 	<main id="main">
 		<h1 class="sub">회원 <small>로그인</small></h1>
@@ -29,7 +29,7 @@
 			<table class="vertical">
 				<tr>
 					<th>아이디</th>
-					<td><input type="text" name="id" id="id" required class="short"></td>
+					<td><input type="text" name="id" id="id" required class="short" autofocus></td>
 				</tr>
 				<tr>
 					<th>암호</th>
@@ -37,8 +37,8 @@
 				</tr>
 			</table>
 			<div>
-				<button type="button" class="back" onclick="location.href'/toy/index.do">돌아가기</button>
-				<button type="submit" class="add primary">로그인</button>
+				<button type="button" class="back" onclick="location.href='/toy/index.do';">돌아가기</button>
+				<button type="submit" class="login primary">로그인</button>
 			</div>
 		</form>
 		
@@ -55,6 +55,11 @@
 			<input type="hidden" name="id" value="test">
 			<input type="hidden" name="pw" value="1111">
 			<button type="submit" class="login primary">테스트</button>
+		</form>
+		<form method="POST" action="/toy/user/login.do">
+			<input type="hidden" name="id" value="hahaha">
+			<input type="hidden" name="pw" value="1111">
+			<button type="submit" class="login primary">하하하</button>
 		</form>
 		<form method="POST" action="/toy/user/login.do">
 			<input type="hidden" name="id" value="admin">

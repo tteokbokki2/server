@@ -55,7 +55,7 @@ public class Register extends HttpServlet {
 			String pw = multi.getParameter("pw");
 			String name = multi.getParameter("name");
 			String email = multi.getParameter("email");
-			String pic = multi.getParameter("pic");
+			String pic = multi.getFilesystemName("pic");
 			String intro = multi.getParameter("intro");
 			
 			//System.out.println(intro);
@@ -67,7 +67,7 @@ public class Register extends HttpServlet {
 			dto.setName(name);
 			dto.setEmail(email);
 			
-			if (pic != null && pic.equals("")) {
+			if (pic != null && !pic.equals("")) {
 				dto.setPic(pic);				
 			} else {				
 				dto.setPic("pic.png");				
