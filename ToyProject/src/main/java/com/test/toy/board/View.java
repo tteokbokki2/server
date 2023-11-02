@@ -26,6 +26,10 @@ public class View extends HttpServlet {
 		//1. 글 번호 가져오기
 		String seq = req.getParameter("seq");
 		
+		String search = req.getParameter("search");
+		String column = req.getParameter("column");
+		String word = req.getParameter("word");
+		
 		//2.
 		BoardDAO dao = new BoardDAO();
 		
@@ -58,6 +62,14 @@ public class View extends HttpServlet {
 		subject = subject.replace(">", "&gt;");
 		
 		dto.setSubject(subject);
+		
+		//내용으로 검색 시 검색어 강조!!
+		if (search.equals("y") && column.equals("content")) {
+			
+			//요즘엔 붕어빵이 1개에 천원입니다
+			//요즘엔 <span style="background-color:gold;color=tomato;">붕어빵</span>이 1개에 천원입니다
+			dto.setContent(dto.getContent().replace(word, "<span style=\'background-color:gold;color=tomato;'>" + word + "</span>"));
+		}
 		
 		//3.
 		req.setAttribute("dto", dto);

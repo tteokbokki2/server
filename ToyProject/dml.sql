@@ -16,6 +16,9 @@ commit;
 
 update tblUser set ing = 'y';
 
+select * from vwBoard; --목록보기
+
+select * from vwBoard where subject like '%게시판%'; --목록보기
 
 
 
@@ -31,4 +34,8 @@ select * from vwBoard;
 update tblBoard set regdate = regdate - 1 where seq <= 6;
 
 commit;
+
+update tblUser set lv = 2 where id = 'admin';
+
+select * from (select a.*, rownum as rnum from vwBoard a) where rnum between 1 and 10;
 

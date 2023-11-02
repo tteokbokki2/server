@@ -49,12 +49,13 @@
 		- UserDAO.java
 	4. com.test.toy.model
 		- UserDTO.java
-	5. com.test.toy.board.repository
+	5. com.test.toy.board
 		- List.java: 목록보기
 		- Add.java: 글쓰기
 		- View.java: 글보기
 		- Edit.java: 수정
 		- Del.java: 삭제
+		- Dummy.java: 더미데이터
 	6. com.test.toy.board.repository
 		- BoardDAO.java
 	7. com.test.toy.board.model
@@ -120,3 +121,12 @@ Favicon
 - 글쓰기, 수정하기, 삭제하기 > 비회원(X), 회원(O)
 - 수정하기, 삭제하기 > 비회원(X), 회원(선택적, 자기글만 가능)
 - 수정하기, 삭제하기 > 관리자(모든 글 가능)
+
+-------------------------------------------------------------------
+
+검색하기
+
+
+페이징
+- 다량의 게시물을 한 화면에 출력하기 불편함 > 페이징처리(가상의 페이지로 분할해서 나눠서 출력하는 행위)
+

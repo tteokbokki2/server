@@ -39,7 +39,7 @@ create sequence seqBoard;
 create or replace view vwBoard
 as
 select 
-    seq, subject, id, readcount, 
+    seq, subject, id, readcount, content,
     case
         when to_char(sysdate, 'yyyy-mm-dd') = to_char(regdate, 'yyyy-mm-dd') 
             then to_char(regdate, 'hh24:mi:ss')
