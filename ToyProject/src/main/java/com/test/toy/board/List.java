@@ -165,11 +165,13 @@ public class List extends HttpServlet {
 		}
 		
 		//다음 10페이지
+		/*
 		if () {
 			sb.append(String.format("<a href='/toy/board/list.do?page=%d'>[다음 %d페이지]</a>", n, blockSize));
 		} else {
 			sb.append(String.format("<a href='/toy/board/list.do?page=%d'>[다음 %d페이지]</a>", n, blockSize));
 		}
+		*/
 
 		//2.
 		req.setAttribute("list", list);

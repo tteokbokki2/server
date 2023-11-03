@@ -8,6 +8,16 @@
 <%@ include file="/WEB-INF/views/inc/asset.jsp" %>
 <style>
 	#view tr:nth-child(4) { height: 100px; }
+	
+	#add-comment td:nth-child(1) { width: auto; }
+	#add-comment td:nth-child(2) { width: 110px; text-align: center; }
+	#list-comment td:nth-child(1) { width: auto; }
+	#list-comment td:nth-child(2) { width: 170px; }
+	#list-comment td:nth-child() > div {
+		display: flex;
+		justify-content: space-between;
+	}
+	#list
 </style>
 </head>
 <body>
@@ -41,6 +51,36 @@
 				<td>${dto.readcount}</td>
 			</tr>
 		</table>
+		
+		<!-- 댓글 쓰기 -->
+		
+		<form>
+		<table id="add-comment">
+			<tr>
+				<td><input type="text" name="comment" id="comment" class="full"></td>
+				<td><button type="button" class="comment" id="">댓글쓰기</td>
+			</tr>
+		</table>
+		</form>
+		
+		<!-- 댓글 목록 -->
+		<table id="list-comment">
+		<!--<tr>
+				<td>
+					<div>댓글 내용입니다.</div>
+					<div>2023-11-03 09:21:14</div>
+				</td>
+				<td>
+					<div>홍길동</div>
+					<div>
+					<button type="button" class="edit">수정</button>
+					<button type="button" class="del">삭제</button>
+					</div>
+				</td>	
+			</tr> -->
+		</table>
+		
+		
 		<div>
 			<button type="button" class="back" onclick="location.href='/toy/board/list.do';">뒤로가기</button>
 			
@@ -51,6 +91,100 @@
 		</div>
 	</main>
 	<script>
+		//댓글 쓰기
+		$('#addComment').click(function() {
+			
+			$.ajax({
+				type: 'POST',
+				url: '/toy/board/comment.do',
+				data: {
+					content: $('#comment').val(),
+					bseq: ${dto.seq}
+				},
+				dataType: 'json',
+				success: function(result) {
+					alert(result.result);
+					load(); //목록 새로고침					
+				},
+					$('#comment').val('') //초기화
+				error: function(a,b,c) {
+					console.log(a,b,c);
+				}
+				
+			});
+			
+		});
+		
+		$('#comment').keydown(function() {
+			if (event.keyCode == 13) { //엔터(\r)
+				$('#btnComment').click();
+			}
+		});
+		
+		load();
+		
+		//댓글 목록 가져오기(ajax) > 화면에 출력
+		function load() {
+			$.ajax({
+				type: 'GET',
+				url: '/ajax/board/comment.do',
+				data: 'bseq=부모글번호',
+				dataType: 'json',
+				success: function(result) {
+					//result == 댓글 목록
+					
+					$('#list-comment tbody').html(''); //기존 내용 삭제
+					
+					$(result).each((index, item) => {
+						//console.log(item);
+						
+						$('#list-comment tbody').append(`
+								
+							<tr>
+								<td>
+									<div>\${item.content}</div>
+									<div>\${item.regdate}</div>
+								</td>
+								<td>
+									<div>\${item.name}(\${item.id})</div>
+									<div>
+									<button type="button" class="edit">수정</button>
+									<button type="button" class="del" onclick="delComment(\${item.seq});">삭제</button>
+									</div>
+								</td>	
+							</tr>		
+								
+						`);
+						
+					});
+				},
+				error: function(a,b,c) {
+					console.log(a,b,c);
+				}
+			});
+		}
+		
+		function delComment(seq) {
+			//alert(seq);
+			
+			$.ajax({
+				type: 'POST',
+				url: '/toy/board/delcomment.do',
+				data: 'seq=' + seq,
+				dataType: 'json',
+				success: function(result) {
+					if (result.result == 1) {
+						
+						load(;) //목록 새로고침
+					}
+				},
+				error: function(a,b,c) {
+					console.log(a,b,c);
+				}
+			});
+		}
+		
+		
 		
 	</script>
 </body>

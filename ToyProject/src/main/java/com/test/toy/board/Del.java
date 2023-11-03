@@ -47,6 +47,9 @@ public class Del extends HttpServlet {
 		//2.
 		BoardDAO dao = new BoardDAO();
 		
+		//딸린 댓글들 삭제
+		dao.delComment(seq);
+		
 		int result = dao.del(seq);
 		
 		//3.
