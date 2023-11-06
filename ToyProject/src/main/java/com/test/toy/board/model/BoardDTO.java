@@ -14,5 +14,6 @@ public class BoardDTO {
 	
 	private String name;
 	private int isnew;
+	private int ccnt;
 	
 }

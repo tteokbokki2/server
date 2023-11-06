@@ -152,7 +152,7 @@ public class BoardDAO {
 		
 		try {
 
-			String sql = "update tblBoard set subject = ? , content = ? where seq = ?";
+			String sql = "update tblBoard set subject = ?, content = ? where seq = ?";
 
 			pstat = conn.prepareStatement(sql);
 			pstat.setString(1, dto.getSubject());
@@ -218,7 +218,7 @@ public class BoardDAO {
 	      //queryParamNoReturn   
 	      try {
 
-	         String sql = "insert into tblComment (seq, content, regdate, id, bseq)values (seqComment.nextVal, ?, default, ?, ?)";;
+	         String sql = "insert into tblComment (seq, content, regdate, id, bseq) values (seqComment.nextVal, ?, default, ?, ?)";
 
 	         pstat = conn.prepareStatement(sql);
 	         pstat.setString(1, dto.getContent());
@@ -270,12 +270,61 @@ public class BoardDAO {
 		return null;
 	}
 
-	public void delComment(String seq) {
+	public int delComment(String seq) {
+		
 		//queryParamNoReturn
+		try {
+
+			String sql = "delete from tblComment where seq = ?";
+
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+
+			return pstat.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
+
+	public void delCommentAll(String seq) {
+		
+		//queryParamNoReturn
+		try {
+
+			String sql = "delete from tblComment where bseq = ?";
+
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, seq);
+
+			pstat.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
-	
-	
 
+	public int editComment(CommentDTO dto) {
+		
+		//queryParamNoReturn
+		try {
+
+			String sql = "update tblComment set content = ? where seq = ?";
+
+			pstat = conn.prepareStatement(sql);
+			pstat.setString(1, dto.getContent());
+			pstat.setString(2, dto.getSeq());
+
+			return pstat.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return 0;
+	}
 
 }

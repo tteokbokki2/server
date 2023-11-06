@@ -115,7 +115,7 @@ Model
 
 Favicon
 - Favorite icon
-- icon 파일 필요(*.ico) > "favicon.ico"
+- icon 파일 필요(*.ico) >	 "favicon.ico"
 - webapp > asset > favicon.ico (위치 무관)
 
 
@@ -127,7 +127,7 @@ Favicon
 - 수정하기, 삭제하기 > 비회원(X), 회원(선택적, 자기글만 가능)
 - 수정하기, 삭제하기 > 관리자(모든 글 가능)
 
--------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------
 
 검색하기
 
@@ -136,3 +136,31 @@ Favicon
 - 다량의 게시물을 한 화면에 출력하기 불편함 > 페이징처리(가상의 페이지로 분할해서 나눠서 출력하는 행위)
 
 댓글
+
+---------------------------------------------------------------------------------------------------
+
+Open API > map
+- Google Map
+- Naver Map
+- Kakao Map
+
+Kakao Map API
+- https://apis.map.kakao.com/web/guide/
+
+카카오 개발자 센터
+- https://developers.kakao.com/ > 회원가입 or 로그인
+
+- "com.test.toy.map" > "Ex.java"
+-					 > "MapDAO.java"
+					 > "MapDTO.java"
+					 > "AddMarker.java"
+					 
+					 > "AddPlace.java"
+					 > "ListPlace.java"
+					 > "DelPlace.java"
+					 > "PlaceDTO.java"
+
+- views > "map" > "ex01.jsp"
+-				> "ex02.jsp"
+-				> "ex03.jsp"
+

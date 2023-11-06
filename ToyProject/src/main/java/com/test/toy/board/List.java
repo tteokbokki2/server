@@ -32,7 +32,7 @@ public class List extends HttpServlet {
 		String word = req.getParameter("word");
 		String search = "n"; //검색 중("Y"), 목록보기("n")
 		
-		if (column == null || word == null && (column.equals("")) && (word.equals(""))) {
+		if ((column == null && word == null) || (column.equals("") && word.equals(""))) {
 			search = "n";
 		} else {
 			search = "y"; 
@@ -40,7 +40,7 @@ public class List extends HttpServlet {
 		
 		HashMap<String, String> map = new HashMap<String, String>();
 		
-		map.put("colum", column);
+		map.put("column", column);
 		map.put("word", word);
 		map.put("search", search);
 		
@@ -95,7 +95,7 @@ public class List extends HttpServlet {
 		
 		
 		//1.5 데이터 가공
-		for (BoardDTO dto:list) {
+		for (BoardDTO dto : list) {
 			
 			//날짜 자르기
 			//String regdate = dto.getRegdate();			
@@ -151,11 +151,19 @@ public class List extends HttpServlet {
 		loop = 1; //루프를 돌리기 위한 변수
 		//n = 1; //출력 페이지 번호
 		n = ((nowPage - 1) / blockSize) * blockSize + 1;
+
+		//이전 10페이지
+		if (n == 1) {
+			sb.append(String.format("<a href='#!'>[이전 %d페이지]</a>", blockSize));
+		} else {
+			sb.append(String.format("<a href='/toy/board/list.do?page=%d'>[이전 %d페이지]</a>", n - 1, blockSize));
+		}
+
 		
-		while (!(loop > blockSize)) {
+		while (!(loop > blockSize || n > totalPage)) {
 			
 			if (n == nowPage) {				
-				sb.append(String.format(" <a href='#!' style:'color:tomato;'>%d</a> ", n, n));
+				sb.append(String.format(" <a href='#!' style:'color:tomato;'>%d</a> ", n));
 			} else {
 				sb.append(String.format(" <a href='/toy/board/list.do?page=%d'>%d</a> ", n, n));
 			}
@@ -165,13 +173,13 @@ public class List extends HttpServlet {
 		}
 		
 		//다음 10페이지
-		/*
-		if () {
-			sb.append(String.format("<a href='/toy/board/list.do?page=%d'>[다음 %d페이지]</a>", n, blockSize));
+	
+		if (n > totalPage) {
+			sb.append(String.format("<a href='#!'>[다음 %d페이지]</a>", blockSize));
 		} else {
 			sb.append(String.format("<a href='/toy/board/list.do?page=%d'>[다음 %d페이지]</a>", n, blockSize));
 		}
-		*/
+	
 
 		//2.
 		req.setAttribute("list", list);

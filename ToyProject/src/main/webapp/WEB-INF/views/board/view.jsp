@@ -9,15 +9,18 @@
 <style>
 	#view tr:nth-child(4) { height: 100px; }
 	
-	#add-comment td:nth-child(1) { width: auto; }
-	#add-comment td:nth-child(2) { width: 110px; text-align: center; }
+	#add-comment td:nth-child(1) { width: auto; text-align: center; }
+	#add-comment td:nth-child(2) { width: 100px; text-align: center; }
 	#list-comment td:nth-child(1) { width: auto; }
-	#list-comment td:nth-child(2) { width: 170px; }
-	#list-comment td:nth-child() > div {
+	#list-comment td:nth-child(2) { width: 170px; text-align: center; }
+	#list-comment td:nth-child(1) > div {
 		display: flex;
 		justify-content: space-between;
 	}
-	#list
+	#list-comment td:nth-child(1) > div > div:nth-child(2) {
+		font-size: 12px;
+		color: #777;
+	}
 </style>
 </head>
 <body>
@@ -54,24 +57,29 @@
 		
 		<!-- 댓글 쓰기 -->
 		
-		<form>
+		<c:if test="${not empty id}">
 		<table id="add-comment">
 			<tr>
 				<td><input type="text" name="comment" id="comment" class="full"></td>
-				<td><button type="button" class="comment" id="">댓글쓰기</td>
+				<td><button type="button" class="comment" id="btnComment">댓글쓰기</button></td>
 			</tr>
 		</table>
-		</form>
+		</c:if>
 		
 		<!-- 댓글 목록 -->
 		<table id="list-comment">
+			<tbody>
+		
+			</tbody>
 		<!--<tr>
 				<td>
-					<div>댓글 내용입니다.</div>
-					<div>2023-11-03 09:21:14</div>
+					<div>
+						<div>댓글 내용입니다.</div>
+						<div>2023-11-03 09:21:14</div>
+					</div>
 				</td>
 				<td>
-					<div>홍길동</div>
+					<div>홍길동(hong)</div>
 					<div>
 					<button type="button" class="edit">수정</button>
 					<button type="button" class="del">삭제</button>
@@ -84,7 +92,7 @@
 		<div>
 			<button type="button" class="back" onclick="location.href='/toy/board/list.do';">뒤로가기</button>
 			
-			<c:if test="${not empty id && (dto.id == id || lv =2)}">
+			<c:if test="${not empty id && (dto.id == id || lv == 2)}">
 			<button type="button" class="edit" onclick="location.href='/toy/board/edit.do?seq=${dto.seq}';">수정하기</button>
 			<button type="button" class="del" onclick="location.href='/toy/board/del.do?seq=${dto.seq}';">삭제하기</button>
 			</c:if>
@@ -92,7 +100,7 @@
 	</main>
 	<script>
 		//댓글 쓰기
-		$('#addComment').click(function() {
+		$('#btnComment').click(function() {
 			
 			$.ajax({
 				type: 'POST',
@@ -103,10 +111,12 @@
 				},
 				dataType: 'json',
 				success: function(result) {
-					alert(result.result);
-					load(); //목록 새로고침					
+					//alert(result.result);
+					if (result.result == 1) {
+						load(); //목록 새로고침
+					}
+					$('#comment').val(''); //초기화				
 				},
-					$('#comment').val('') //초기화
 				error: function(a,b,c) {
 					console.log(a,b,c);
 				}
@@ -127,8 +137,8 @@
 		function load() {
 			$.ajax({
 				type: 'GET',
-				url: '/ajax/board/comment.do',
-				data: 'bseq=부모글번호',
+				url: '/toy/board/comment.do',
+				data: 'bseq=${dto.seq}',
 				dataType: 'json',
 				success: function(result) {
 					//result == 댓글 목록
@@ -137,55 +147,127 @@
 					
 					$(result).each((index, item) => {
 						//console.log(item);
-						
-						$('#list-comment tbody').append(`
-								
+
+						let temp = `
 							<tr>
 								<td>
-									<div>\${item.content}</div>
-									<div>\${item.regdate}</div>
+									<div>
+										<div>\${item.content}</div>
+										<div>\${item.regdate}</div>
+									</div>
 								</td>
 								<td>
-									<div>\${item.name}(\${item.id})</div>
+								  	<div>\${item.name}(\${item.id})</div>
+							`;
+							
+						if (item.id == '${id}') {
+						temp += `
+								  	<c:if test="${not empty id}">
 									<div>
-									<button type="button" class="edit">수정</button>
-									<button type="button" class="del" onclick="delComment(\${item.seq});">삭제</button>
-									</div>
-								</td>	
-							</tr>		
-								
-						`);
+										<button type="button" class="edit" onclick="editComment(\${item.seq});">수정</button>
+										<button type="button" class="del" onclick="delComment(\${item.seq});">삭제</button>
+									</div>					
+									</c:if>
+							`;
+						}
+							
+						temp += `
+								</td>
+							</tr>								
+							
+						`;
+						
+						$('#list-comment tbody').append(temp);
+						
 						
 					});
+					
 				},
 				error: function(a,b,c) {
 					console.log(a,b,c);
 				}
 			});
+			
 		}
 		
+		
 		function delComment(seq) {
+			
+			if (confirm('delete?')) {
+				$.ajax({
+					type: 'POST',
+					url: '/toy/board/delcomment.do',
+					data: 'seq=' + seq,
+					dataType: 'json',
+					success: function(result) {
+						
+						if (result.result == 1) {
+							load(); //목록 새로고침
+						}
+						
+					},
+					error: function(a,b,c) {
+						console.log(a,b,c);
+					}
+				});
+			}
+			
+		}
+		
+		
+		function editComment(seq) {
+			
+			//alert($(event.target).parent().parent().prev().children().eq(0).children().eq(0).text());
+			
+			let val = $(event.target).parent().parent().prev().children().eq(0).children().eq(0).text();
+					
+			$('.edit-comment').remove();
+			
+			let temp = `
+			
+				<tr class="edit-comment">
+					<td><input type="text" name="ecomment" id="ecomment" class="long" value="\${val}"></td>
+					<td>
+						<button type="button" class="edit" onclick="editCommentOk(\${seq});">완료</button>
+						<button type="button" class="cancel" onclick="$('.edit-comment').remove();">취소</button>
+					</td>
+				</tr>
+			
+			`;
+			
+			$(event.target).parent().parent().parent().after(temp);
+			
+		}
+		
+		
+		function editCommentOk(seq) {
+			
+			//alert($('#ecomment').val());
 			//alert(seq);
 			
 			$.ajax({
 				type: 'POST',
-				url: '/toy/board/delcomment.do',
-				data: 'seq=' + seq,
+				url: '/toy/board/editcomment.do',
+				data: {
+					content: $('#ecomment').val(),
+					seq: seq
+				},
 				dataType: 'json',
 				success: function(result) {
+					
 					if (result.result == 1) {
-						
-						load(;) //목록 새로고침
+						load(); //새로 고침
 					}
+					
 				},
 				error: function(a,b,c) {
 					console.log(a,b,c);
 				}
 			});
+			
 		}
 		
-		
-		
+	
 	</script>
 </body>
-</html>
+</html>						

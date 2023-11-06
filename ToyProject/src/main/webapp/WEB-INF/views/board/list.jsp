@@ -33,13 +33,21 @@
 		text-align: center;
 		margin-bottom: 15px;
 	}
+
+	.comment-count {
+		font-size: 12px;
+	}
+	
+	.comment-count::before {
+		content: '..';
+	}
 </style>
 </head>
 <body>
 	<!-- list.jsp -->
 	<%@ include file="/WEB-INF/views/inc/header.jsp" %>
 	<main id="main">
-		<h1>
+		<h1 class="sub">
 			게시판 
 			<small>
 				<c:if test="${map.search == 'n'}">
@@ -50,24 +58,31 @@
 				</c:if>
 			</small>		
 		</h1>
+
+		<%-- 
+		<div style="text-align:right;">		
+			<input type="number" id="page" class="short" min="1" max="${totalPage}" value="${nowPage}">
+			<input type="button" value="이동하기" onclick="location.href='/toy/board/list.do?page=' + $('#page').val();">
+		</div> 
+		--%>
 		
+		<%--
 		<div style="text-align: right;">
 			<select id="selPage" onchange="location.href='/toy/board/list.do?page=' + $(this).val();">
 				<c:forEach var="i" begin="1" end="${totalPage}">
 					<option value="${i}">${i}</option>
 				</c:forEach>
 			</select>
+			페이지
 		</div>
-		
-		<%-- <div style="text-align: right;">
-			<input type="number" id="page" class="short" min="1" max="${totalPage}" value="${nowPage}">
-			<input type="button" value="이동하기" onclick="location.href='list.do?page=' + $('#page').val();">
-		</div> --%>
-		
+		--%>
+			
+		<%--
 		<div>
 			<input type="range" min="1" max="${totalPage}" style="width:100%;" value="${nowPage}" onchange="location.href='/toy/board/list.do?page=' + $(this).val();">
 		</div>
-		
+		--%>
+
 		<table id="list">
 			<tr>
 				<th>번호</th>
@@ -80,9 +95,14 @@
 			<tr>
 				<td>${dto.seq}</td>
 				<td>
-					<a href="/toy/board/view.do?seq=${dto.seq}&search=${map.search}&column=${map.column}&word=${map.word}">${dto.subject}
+					<a href="/toy/board/view.do?seq=${dto.seq}&search=${map.search}&column=${map.column}&word=${map.word}">${dto.subject}</a>
+					
+					<c:if test="${dto.ccnt > 0}"> 
+					<span class="comment-count">${dto.ccnt}</span>
+					</c:if>
+			
 					<c:if test="${dto.isnew == 1}"> 
-					<span class='is-new'>new</span>
+					<span class="is-new">new</span>
 					</c:if>
 				</td>
 				<td>${dto.name}</td>
