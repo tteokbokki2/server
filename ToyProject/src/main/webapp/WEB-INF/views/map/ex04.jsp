@@ -13,20 +13,26 @@
 		align-items: flex-start;
 	}
 	#main table {
-		width: 384px; 
+		width: 384px;
 		margin: 0px 16px;
 		margin-bottom: 10px;
 	}
+	
 	#list td {
-		cursor: pointer;
-		display: flex;
-		justify-content: space-between;
+		cursor: pointer;		
 	}
+	
+	#list td span:first-child {
+		float: left; 
+		margin-right: 7px;
+	}
+	
 	#list td span:last-child {
-		float: right;
+		float: right; 
 		display: none;
 	}
-	#list td:hover span:last-child {
+	
+	#list td:hover span:last-child { 
 		display: inline;
 	}
 </style>
@@ -213,7 +219,7 @@
 		
 		//마커 이미지 추가
 		let imageUrl = '/toy/asset/marker/' + category + '.png';
-		let imageSize = new kakao.maps.size(40, 40);
+		let imageSize = new kakao.maps.Size(40, 40);
 		let option = {}
 		
 		let markerImage = new kakao.maps.MarkerImage(imageUrl, imageSize, option);
